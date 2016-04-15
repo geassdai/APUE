@@ -13,8 +13,11 @@ int main(){
     else if(pid == 0){
         global++;
         var++;
-        _exit(0);  //exit(0)都可以正常输出
+        fclose(stdout);
+        _exit(0);
     }
     printf("pid = %ld, glob = %d, var = %d\n", (long)getpid(), global, var);
+    char buf[MAXLINE] = "hello\n";
+    write(STDOUT_FILENO, buf, strlen(buf));
     exit(0);
 }
